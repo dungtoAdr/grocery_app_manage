@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_manager_app/models/category.dart';
 import 'package:grocery_manager_app/providers/category_provider.dart';
+import 'package:grocery_manager_app/screens/products_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,12 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Provider.of<CategoryProvider>(context, listen: false).getCategories();
-  }
 
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
@@ -34,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Category category;
     void showsDialog(Category? category) {
       if (category != null) {
         nameController.text = category.name;
@@ -122,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
+      appBar: AppBar(title: Text("Danh mục"),),
       body: Consumer<CategoryProvider>(
         builder: (context, value, child) {
           List<Category> categories = Provider.of<CategoryProvider>(
@@ -131,27 +126,35 @@ class _HomeScreenState extends State<HomeScreen> {
           return ListView.builder(
             itemCount: categories.length,
             itemBuilder: (context, index) {
-              category = categories[index];
-              return Card(
-                child: ListTile(
-                  title: Text(category.name),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        onPressed: () => showsDialog(category),
-                        icon: Icon(Icons.auto_fix_high),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Provider.of<CategoryProvider>(
-                            context,
-                            listen: false,
-                          ).deleteCategory(category.id!);
-                        },
-                        icon: Icon(Icons.remove),
-                      ),
-                    ],
+              Category category = categories[index];
+              return GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductsScreen(id: category.id!),
+                  ),
+                ),
+                child: Card(
+                  child: ListTile(
+                    title: Text(category.name),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () => showsDialog(category),
+                          icon: Icon(Icons.auto_fix_high),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Provider.of<CategoryProvider>(
+                              context,
+                              listen: false,
+                            ).deleteCategory(category.id!);
+                          },
+                          icon: Icon(Icons.remove),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

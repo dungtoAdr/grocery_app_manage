@@ -37,6 +37,7 @@ dependencies:
   http: ^1.4.0
   provider:
   curved_navigation_bar: ^1.0.6
+  fl_chart: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,7 +64,32 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
+  assets:
+    - assets/pic1.png
+    - assets/pic2.png
+    - assets/pic3.png
+    - assets/pic4.png
+    - assets/bigCart.png
+    - assets/bigCart2x.png
+    - assets/welcome_img.png
+    - assets/gg_logo.png
+    - assets/ic_google.png
+    - assets/ic_person.png
+    - assets/login_img.png
+    - assets/signup_img.png
+    - assets/baner_1.png
+    - assets/beverages.png
+    - assets/edible_oil.png
+    - assets/fruits.png
+    - assets/grocery.png
+    - assets/household.png
+    - assets/vegetable.png
+    - assets/avacoda.png
+    - assets/pineapple.png
+    - assets/grapes.png
+    - assets/lemon.png
+    - assets/baby_care.png
+    - assets/peach.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

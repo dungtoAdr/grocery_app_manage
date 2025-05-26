@@ -4,6 +4,7 @@ import 'package:grocery_manager_app/models/category.dart';
 import 'package:grocery_manager_app/providers/category_provider.dart';
 import 'package:grocery_manager_app/screens/home_screen.dart';
 import 'package:grocery_manager_app/screens/order_screen.dart';
+import 'package:grocery_manager_app/screens/chart_screen.dart';
 import 'package:grocery_manager_app/screens/user_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _BottomnavState extends State<Bottomnav> {
   late List<Widget> pages;
   late Widget currentPage;
   late HomeScreen homePage;
-  late UserScreen userPage;
+  late ChartScreen chartPage;
   late OrderScreen orderPage;
 
   @override
@@ -27,9 +28,9 @@ class _BottomnavState extends State<Bottomnav> {
     // TODO: implement initState
     super.initState();
     homePage = HomeScreen();
-    userPage = UserScreen();
+    chartPage = ChartScreen();
     orderPage = OrderScreen();
-    pages = [homePage, userPage, orderPage];
+    pages = [homePage, chartPage, orderPage];
   }
 
   @override

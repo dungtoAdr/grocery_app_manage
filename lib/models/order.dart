@@ -19,15 +19,14 @@ class Order {
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
-      id: json['id'],
+      id: int.tryParse(json['id'].toString()),
       uid: json['user_uid'],
-      address_id: json['address_id'],
-      status: json['status'],
-      total: (json['total'] as num).toDouble(),
-      details:
-          (json['details'] as List)
-              .map((item) => OrderDetail.fromJson(item))
-              .toList(),
+      address_id: int.tryParse(json['address_id'].toString()) ?? 0,
+      status: int.tryParse(json['status'].toString()) ?? 0,
+      total: double.tryParse(json['total'].toString()) ?? 0.0,
+      details: (json['details'] as List)
+          .map((item) => OrderDetail.fromJson(item))
+          .toList(),
     );
   }
 

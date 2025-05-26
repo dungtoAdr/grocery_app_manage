@@ -1,21 +1,21 @@
 class Product {
-  final int id;
+  final int? id;
   final String name;
   final double price;
   final String image;
   final String weighed;
   final int category_id;
-  int quantity;
+  int? quantity;
   final bool isNew;
 
   Product({
-    required this.id,
+    this.id,
     required this.name,
     required this.price,
     required this.image,
     required this.weighed,
     required this.category_id,
-    required this.quantity,
+    this.quantity,
     required this.isNew,
   });
 
@@ -46,6 +46,6 @@ class Product {
   }
 
   double totalPrice() {
-    return price * quantity;
+    return price * quantity!;
   }
 }
